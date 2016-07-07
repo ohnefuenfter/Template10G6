@@ -7,6 +7,8 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using Template10.Services.LoggingService;
+using HamburgerG6.Services;
 
 namespace HamburgerG6
 {
@@ -20,14 +22,14 @@ namespace HamburgerG6
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
-
+            
             #region App settings
 
             var _settings = SettingsService.Instance;
             RequestedTheme = _settings.AppTheme;
             CacheMaxDuration = _settings.CacheMaxDuration;
             ShowShellBackButton = _settings.UseShellBackButton;
-
+            
             #endregion
         }
 
@@ -37,7 +39,6 @@ namespace HamburgerG6
             {
                 // create a new frame 
                 var nav = NavigationServiceFactory(BackButton.Attach, ExistingContent.Include);
-
                 // create modal root
                 Window.Current.Content = new ModalDialog
                 {
@@ -51,8 +52,7 @@ namespace HamburgerG6
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // long-running startup tasks go here
-            await Task.Delay(5000);
+            Bootstrapper.StartServices();
 
             NavigationService.Navigate(typeof(Views.MainPage));
             await Task.CompletedTask;

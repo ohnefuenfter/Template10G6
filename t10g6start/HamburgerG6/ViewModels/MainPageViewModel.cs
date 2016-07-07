@@ -48,6 +48,8 @@ namespace HamburgerG6.ViewModels
         public void GotoDetailsPage() =>
             NavigationService.Navigate(typeof(Views.DetailPage), Value);
 
+        public void GotoCaseListPage() => NavigationService.Navigate(typeof(Views.CaseListPage), null);
+
         public void GotoSettings() =>
             NavigationService.Navigate(typeof(Views.SettingsPage), 0);
 
