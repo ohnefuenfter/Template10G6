@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-lazy='false' namespace='nhibernateTest.Test' assembly='nhibernateTest' xmlns='urn:nhibernate-mapping-2.2'>
+  <class name="ClassB" table="Class_B" lazy="true">
+    <id name="ClassBPK" column="class_b_pk" generator="assigned" unsaved-value="0"/>
+
+    <property name="CreateDate" column="create_date"/>
+  </class>
+</hibernate-mapping>

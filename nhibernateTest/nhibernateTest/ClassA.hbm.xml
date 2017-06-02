@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-lazy='false' namespace='nhibernateTest.Test' assembly='nhibernateTest' xmlns='urn:nhibernate-mapping-2.2'>
+  <class name="ClassA" table="Class_A" lazy="true">
+    <id name="ClassAPK" column="class_a_pk" generator="assigned" unsaved-value="0"/>
+    
+    <map name="Dict" table="Dict_A_B">
+      <key column="class_a_pk" />
+      <index-many-to-many column="class_b_pk" class="nhibernateTest.Test.ClassB" />
+      <element column="factor" type="Int32" />
+    </map>
+
+    <bag name="WrapDict" table="Dict_A_B" lazy="true" inverse="true">
+      <key column="class_a_pk" />
+      <many-to-many class="nhibernateTest.Test.WrapDictAB" column="class_b_pk" />
+    </bag>
+  </class>
+</hibernate-mapping>

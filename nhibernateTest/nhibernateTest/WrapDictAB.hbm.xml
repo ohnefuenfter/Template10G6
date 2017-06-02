@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping default-lazy='false' namespace='nhibernateTest.Test' assembly='nhibernateTest' xmlns='urn:nhibernate-mapping-2.2'>
+  <class name="WrapDictAB" table="Dict_A_B" lazy="true">
+    <id name="WrapDictABPK" column="class_b_pk" generator="assigned" unsaved-value="0"/>
+
+    <many-to-one name="ClassB" column="class_b_pk" insert="false" update="false"/>
+    <property name="Factor" column="factor" insert="false" update="false"/>
+  </class>
+</hibernate-mapping>
